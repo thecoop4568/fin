@@ -217,7 +217,7 @@ function App() {
                             color: "var(--white)",
                           }}
                         >
-                          {blockchain.errorMsg}
+                          Connect to Ethereum Mainnet
                         </s.TextDescription>
                       </>
                     ) : null}
