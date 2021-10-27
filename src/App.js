@@ -178,12 +178,12 @@ function App() {
             ) : (
               <>
                 <s.TextTitle
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  style={{ textAlign: "center", color: "var(--white)" }}
                 >
                 </s.TextTitle>
               
                 <s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  style={{ textAlign: "center", color: "var(--white)" }}
                 >
                 </s.TextDescription>
                 
@@ -214,7 +214,7 @@ function App() {
                         <s.TextDescription
                           style={{
                             textAlign: "center",
-                            color: "var(--accent-text)",
+                            color: "var(--white)",
                           }}
                         >
                           {blockchain.errorMsg}
@@ -228,7 +228,7 @@ function App() {
                       style={{
                         textAlign: "center",
                         fontSize: 19,
-                        color: "var(--accent-text)",
+                        color: "var(--white)",
                       }}
                     >
                       {feedback}
@@ -249,7 +249,7 @@ function App() {
                       <s.TextDescription
                         style={{
                           textAlign: "center",
-                          color: "var(--accent-text)",
+                          color: "var(--white)",
                         }}
                       >
                         {mintAmount} 
