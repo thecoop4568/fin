@@ -25,7 +25,7 @@
     "web3": "^1.5.1",
     "web3-eth-contract": "^1.5.2"
   },
-  "homepage": "http://mint.zombiechickens.io/",
+  "homepage": "https://thecoop4568.github.io/fin/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
