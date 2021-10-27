@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html,
 body,
 div,
@@ -121,30 +123,6 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-@font-face {
-  font-family: 'Montserrat-Bold';
-  src: local("Montserrat-Bold"),
-    url(../assets/fonts/Montserrat-Bold.ttf) format("ttf");
-}
-
-body {
-  margin: 0;
-  font-family: "Montserrat-Bold";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 body::-webkit-scrollbar {

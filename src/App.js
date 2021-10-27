@@ -4,50 +4,55 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
-
-export const StyledNumberInput = styled.input.attrs((props) => ({
-  type: 'number',
-  min: 1,
-  max: 10,
-  defaultValue: props.value,
-}))`
-border-radius: 50px;
-border: none;
-background-color: #999000;
-padding: 5px;
-font-weight: bold;
-color: #000000;
-width: 50px;
-cursor: ;
-box-shadow: 2px 8px 4px -2px rgba(250, 250, 0, 0.5);
--webkit-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, 0.5);
--moz-box-shadow: 2px 8px 4px -2px rgba(250, 250, 0, 0.5);
-:active {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-}`;
+import "./styles/reset.css";
 
 export const StyledButton = styled.button`
   padding: 10px;
-  border-radius: 50px;
+  border-radius: .5px;
   border: none;
-  background-color: #000000;
+  background-color: #1b1f30;
   padding: 10px;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   color: #ffffff;
-  width: 300px;
+  width: 200px;
   cursor: pointer;
-  box-shadow: 2px 8px 4px -2px rgba(250, 250, 0, 0.5);
-  -webkit-box-shadow: 2px 3px 10px -2px rgba(250, 250, 0, 1.0);
-  -moz-box-shadow: 2px 8px 4px -2px rgba(250, 250, 0, 0.5);
+  box-shadow: 0px 0px 0px 3px rgba(50, 61, 111, 0.5);
+  -webkit-box-shadow: 0px 0px 0px 3px rgba(50, 61, 111, 1.0);
+  -moz-box-shadow: 0px 0px 0px 3px rgba(50, 61, 111, 0.5);
   :active {
     box-shadow: none;
-    -webkit-box-shadow: 2px 3px 10px -2px rgba(250, 250, 0, 1.0);
+    -webkit-box-shadow: 0px 0px 0px 3px rgba(50, 61, 111, 1.0);
     -moz-box-shadow: none;
   }
   :hover {
-    -webkit-box-shadow: 2px 3px 20px -2px rgba(100, 0, 250, 0.9);
+    -webkit-box-shadow: 0px 0px 0px 3px rgba(86, 105, 195, 1.0);
+  }
+`;
+
+export const StyledRoundButton = styled.button`
+  padding: 10px;
+  border-radius: 100%;
+  border: none;
+  background-color: #1b1f30;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: var(--primary-text);
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
+  -webkit-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
+  -moz-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
+  :active {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
   }
 `;
 
@@ -63,115 +68,65 @@ export const ResponsiveWrapper = styled.div`
   }
 `;
 
-export const StyledImg1 = styled.img`
-height: 0px;
-center
-position: fixed;
-  margin-bottom: 0px;
-  margin-top: 160px;
-  @media (min-width: 767px) {
-    width: 1100px;
-    height: 360px;
-  }
-  transition: width 0.5s;
-  transition: height 0.5s;
-`;
-
-export const StyledImg3 = styled.img`
-  width: 300px;
-  height: 300px;
-  @media (min-width: 767px) {
-    width: 300px;
-    height: 300px;
-  }
-  transition: width 0.5s;
-  transition: height 0.5s;
-`;
-
-export const StyledImg4 = styled.img`
-border-radius: 50px;
-color: #ffffff;
-cursor: pointer;
-box-shadow: 2px 8px 4px -2px rgba(100, 0, 250, 0.5);
--webkit-box-shadow: 2px 3px 10px -2px rgba(100, 0, 250, 1.0);
--moz-box-shadow: 2px 8px 4px -2px rgba(100, 0, 250, 0.5);
-:active {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-}
-:hover {
-  -webkit-box-shadow: 2px 3px 20px -2px rgba(250, 250, 0, 0.9);
-}
-`;
-
-export const Gallery = styled.div`
-  height: 0px;
-  position: fixed;
-  margin-bottom: 0px;
-
-  .photobanner {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: bannermove 60s linear infinite alternate;
-
-    &:hover {
-      animation-play-state: ;
-    }
-  }
-
-  .photobanner img {
-    height: 175px;
-    margin: 0 .0em;
-  }
-
-  @keyframes bannermove {
-    70% {
-      transform: translate( -50%, 0);
-    }
-    70% {
-      transform: translate( 50%, 0);
-    }
-  }
+export const StyledLink = styled.a`
+  color: var(--secondary);
+  text-decoration: none;
 `;
 
 function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const [feedback, setFeedback] = useState(" 1 NFT = .0001 ETH");
+  const [feedback, setFeedback] = useState(" Mint to join the coop");
   const [claimingNft, setClaimingNft] = useState(false);
-  const [mintQuantity, setMintQuantity] = useState(1)
+  const [mintAmount, setMintAmount] = useState(1);
 
-  const claimNFTs = (_amount) => {
-    if (_amount <= 0) {
-      return;
-    }
-    setFeedback("...");
+  const claimNFTs = () => {
+    let cost = 100000000000000;
+    let gasLimit = 285000;
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    console.log("Cost: ", totalCostWei);
+    console.log("Gas limit: ", totalGasLimit);
+    setFeedback(`Releasing your chickens...`);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(_amount)
+      .mint(mintAmount)
       .send({
-        gasLimit: "285000",
-        to: "0x969554884af1081E61B96fd6Fa1d1f7b897b0bD8",
+        gasLimit: String(totalGasLimit),
+        to: 0x969554884af1081E61B96fd6Fa1d1f7b897b0bD8,
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei((.0001 * _amount).toString(), "ether"),
+        value: totalCostWei,
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("Try Again");
+        setFeedback("Try again");
         setClaimingNft(false);
       })
       .then((receipt) => {
+        console.log(receipt);
         setFeedback(
-          "Success!"
+          `Success!`  
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
       });
+  };
+
+  const decrementMintAmount = () => {
+    let newMintAmount = mintAmount - 1;
+    if (newMintAmount < 1) {
+      newMintAmount = 1;
+    }
+    setMintAmount(newMintAmount);
+  };
+
+  const incrementMintAmount = () => {
+    let newMintAmount = mintAmount + 1;
+    if (newMintAmount > 30) {
+      newMintAmount = 30;
+    }
+    setMintAmount(newMintAmount);
   };
 
   const getData = () => {
@@ -185,7 +140,7 @@ function App() {
   }, [blockchain.account]);
 
   return (
-    <s.Screen style={{ backgroundColor: "var(--black)" }}>
+    <s.Screen style={{ backgroundColor: "var(--blue)" }}>
       <s.Container flex={1} ai={"center"} style={{ padding: 20 }}>
         <s.TextTitle
           style={{ textAlign: "center", fontSize: 42, fontWeight: "bold" }}
@@ -195,9 +150,9 @@ function App() {
         <ResponsiveWrapper flex={10} style={{ padding: 0 }}>
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <s.TextTitle
-              style={{ textAlign: "center", fontfamily: "Montserrat-Bold", fontSize: 26, fontWeight: "bold" }}
+              style={{ textAlign: "center", fontSize: 26, fontWeight: "bold" }}
             >
-              {data.totalSupply}/10000
+              {data.totalSupply} / 10000
               <s.SpacerSmall/>
             </s.TextTitle>
           </s.Container>
@@ -205,34 +160,45 @@ function App() {
             flex={10}
             jc={"center"}
             ai={"center"}
-            style={{ backgroundColor: "#000000", padding: 2 }}
+            style={{ backgroundColor: "#1f2646", padding: 2 }}
           >
             {Number(data.totalSupply) == 10000 ? (
               <>
-                <s.TextTitle style={{ textAlign: "center" }}>
-                SOLD OUT!
-                </s.TextTitle>
-                <s.SpacerMedium />
-                <s.TextDescription style={{ textAlign: "center" }}>
-                  Please visit OpenSea to buy: {" "}
-                  <a
-                    target={""}
-                    href={"https://opensea.io/collection/the-bee-collaborative"}
-                  >
-                    Zombie Chickens
-                  </a>
-                </s.TextDescription>
-              </>
+              <s.TextTitle
+                style={{ textAlign: "center", color: "var(--white)" }}
+              >
+                Sold out!
+              </s.TextTitle>
+              <s.TextDescription
+                style={{ textAlign: "center", color: "var(--white)" }}
+              >
+                Please visit OpenSea
+              </s.TextDescription>
+            </>
             ) : (
               <>
-                <s.TextDescription style={{ textAlign: "center" }}>
-                  {feedback}
+                <s.TextTitle
+                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                >
+                </s.TextTitle>
+              
+                <s.TextDescription
+                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                >
                 </s.TextDescription>
-                <s.SpacerSmall />
+                
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
-                    <s.SpacerSmall />
+                    <s.TextDescription
+                      style={{
+                        textAlign: "center",
+                        color: "var(--accent-text)",
+                      }}
+                    >
+                      Connect your wallet
+                    </s.TextDescription>
+                    <s.SpacerMedium />
                     <StyledButton
                       onClick={(e) => {
                         e.preventDefault();
@@ -240,73 +206,91 @@ function App() {
                         getData();
                       }}
                     >
-                      CONNECT WALLET
+                      CONNECT
                     </StyledButton>
                     {blockchain.errorMsg !== "" ? (
                       <>
-                        <s.TextDescription style={{ textAlign: "center" }}>
+                        <s.SpacerSmall />
+                        <s.TextDescription
+                          style={{
+                            textAlign: "center",
+                            color: "var(--accent-text)",
+                          }}
+                        >
                           {blockchain.errorMsg}
                         </s.TextDescription>
                       </>
                     ) : null}
                   </s.Container>
                 ) : (
-                  <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                    <StyledNumberInput 
-                    value={mintQuantity}
-                      onChange={(e) => setMintQuantity(e.target.value) }
-                    />
-                    <StyledButton
-                      disabled={claimingNft ? 1 : 0}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        claimNFTs(mintQuantity);
-                        getData();
+                  <>
+                    <s.TextDescription
+                      style={{
+                        textAlign: "center",
+                        fontSize: 19,
+                        color: "var(--accent-text)",
                       }}
                     >
-                      {claimingNft ? "..." : `MINT`}
-                    </StyledButton>
-                  </s.Container>
+                      {feedback}
+                    </s.TextDescription>
+                    <s.SpacerSmall />
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                      <StyledRoundButton
+                        style={{ lineHeight: 0.4 }}
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          decrementMintAmount();
+                        }}
+                      >
+                        -
+                      </StyledRoundButton>
+                      <s.SpacerLarge />
+                      <s.TextDescription
+                        style={{
+                          textAlign: "center",
+                          color: "var(--accent-text)",
+                        }}
+                      >
+                        {mintAmount} 
+                      </s.TextDescription> 
+                      <s.SpacerLarge />
+                      <StyledRoundButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          incrementMintAmount();
+                        }}
+                      >
+                        +
+                      </StyledRoundButton>
+                    </s.Container>
+                    <s.SpacerSmall />
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                      <StyledButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          claimNFTs();
+                          getData();
+                        }}
+                      >
+                        {claimingNft ? "..." : "MINT"}
+                      </StyledButton>
+                    </s.Container>
+                  </>
                 )}
               </>
             )}
+            <s.SpacerMedium />
+          </s.Container>
+          <s.SpacerLarge />
+          <s.Container flex={1} jc={"center"} ai={"center"}>
           </s.Container>
         </ResponsiveWrapper>
-        <s.SpacerSmall />
-        <s.TextDescription style={{ textAlign: "center", fontSize: 20 }}>
-                   <s.TextDescription style={{ textAlign: "center", fontSize: 16 }}>
-                   {" "}
-                </s.TextDescription>
-          {/* <button 
-  onClick={() =>  navigator.clipboard.writeText('https://etherscan.io/token/0x969554884af1081E61B96fd6Fa1d1f7b897b0bD8')}
->
-Click to Copy Etherscan Address | Buy Straight from Contract
-</button> */}
-          </s.TextDescription>
-          <s.SpacerSmall />
-          {/* <s.TextDescription style={{ textAlign: "center" }}>
-                  {" "}
-                  <a
-                    target={""}
-                    href={"https://t.me/TBCToken"}
-                  >
-                    Telegram
-                  </a>
-                </s.TextDescription>
-                <s.TextDescription style={{ textAlign: "center" }}>
-                   {" "}
-                  <a
-                    target={""}
-                    href={"https://discord.gg/Rx2b4JTxJr"}
-                  >
-                    Discord
-                  </a>
-                </s.TextDescription> */}
-        <s.Container jc={"top"} ai={"center"} style={{ width: "70%" }}>
-        <s.SpacerLarge />
-        </s.Container>
+        <s.SpacerMedium />
       </s.Container>
-  </s.Screen>
+    </s.Screen>
   );
 }
 
