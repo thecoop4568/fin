@@ -193,7 +193,7 @@ function App() {
                     <s.TextDescription
                       style={{
                         textAlign: "center",
-                        color: "var(--accent-text)",
+                        color: "var(--white)",
                       }}
                     >
                       Connect your wallet
